@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='macos'>
+    <pages>
+        <page name='BS - Team Name Fetcher'/>
+        <page name='BS - Team URL Fetcher'/>
+        <page name='LS - Player By Team'/>
+    </pages>
+</playground>
