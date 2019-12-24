@@ -8,7 +8,8 @@
 import Foundation
 
 public struct Player: Codable {
-    var id: Int
+    public var id: Int? // needs to be an optional for Fluent to use
+    
     var FullName: String
     var Postion: String
     var Bats: String
