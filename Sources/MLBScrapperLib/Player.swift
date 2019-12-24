@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Player: Codable {
-    var ID: Int
+    var id: Int
     var FullName: String
     var Postion: String
     var Bats: String
@@ -112,7 +112,7 @@ public struct Player: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case ID = "player_id"
+        case id = "player_id"
         case FullName = "name_display_first_last"
         case Postion = "position_txt"
         case Bats = "bats"
@@ -122,8 +122,8 @@ public struct Player: Codable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let id = try values.decode(String.self, forKey: .ID)
-        ID = Int(id) ?? -1
+        let tmpID = try values.decode(String.self, forKey: .id)
+        id = Int(tmpID) ?? -1
         
         FullName = try values.decode(String.self, forKey: .FullName)
         Postion = try values.decode(String.self, forKey: .Postion)
