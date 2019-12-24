@@ -6,15 +6,16 @@
 //
 import Foundation
 
-public struct Team: Codable {
-    var ID: Int
+final public class Team: Codable {
+    public var id: Int?
+    
     var VenueID: Int
     var VenueName: String
     var Name: String
     var DivisionID: Int
     
     enum CodingKeys: String, CodingKey {
-        case ID = "mlb_org_id"
+        case id = "mlb_org_id"
         case Name = "name"
         case VenueID = "venue_id"
         case VenueName = "venue_name"
@@ -23,8 +24,8 @@ public struct Team: Codable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let id = try values.decode(String.self, forKey: .ID)
-        ID = Int(id) ?? -1
+        let tmpID = try values.decode(String.self, forKey: .id)
+        id = Int(tmpID) ?? -1
         
         let vID = try values.decode(String.self, forKey: .VenueID)
         VenueID = Int(vID) ?? -1
