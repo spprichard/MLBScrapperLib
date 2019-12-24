@@ -1,4 +1,4 @@
-import MLBScrapper
+import MLBScrapperLib
 
 
 do {
