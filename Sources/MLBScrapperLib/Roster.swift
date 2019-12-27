@@ -32,6 +32,10 @@ extension Roster {
         let data = try Data(contentsOf: url)
         
         let result = try decoder.decode(RosterRequestResult.self, from: data)
-        return result.roster_40.queryResults.row
+        let mlbLookupPlayers = result.roster_40.queryResults.row
+        
+        return mlbLookupPlayers.map { mlbPlayer in
+            return mlbPlayer.toPlayer()
+        }
     }
 }
