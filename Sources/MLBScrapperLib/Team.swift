@@ -8,11 +8,10 @@ import Foundation
 
 final public class Team: Codable {
     public var id: Int?
-    
-    var VenueID: Int
-    var VenueName: String
-    var Name: String
-    var DivisionID: Int
+    public var VenueID: Int
+    public var VenueName: String
+    public var Name: String
+    public var DivisionID: Int
     
     enum CodingKeys: String, CodingKey {
         case id = "mlb_org_id"
