@@ -16,7 +16,7 @@ struct RosterRequestResult: Codable {
         struct RosterQueryResult: Codable {
             var created: String
             var totalSize: String
-            var row: [Player]
+            var row: [MLBLookupPlayer]
         }
     }
 }
@@ -42,7 +42,7 @@ struct CareerHittingStatsResult: Codable {
         var queryResults: CHSQueryResult
         
         struct CHSQueryResult: Codable {
-            var row: Player.CareerHittingStats
+            var row: MLBLookupPlayer.CareerHittingStats
         }
     }
 }
