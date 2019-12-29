@@ -53,7 +53,7 @@ public struct Endpoint {
     }
 }
 
-public enum GameType: String {
+public enum GameType: String, Codable {
     case R = "R" // regular season
     case S = "S" // spring training
     case E = "E" // exhibition
