@@ -6,7 +6,7 @@
 //
 import Foundation
 
-final public class Team: Codable {
+public struct MLBLookupTeam: Codable {
     public var id: Int?
     public var VenueID: Int
     public var VenueName: String
@@ -35,9 +35,26 @@ final public class Team: Codable {
         let dID = try values.decode(String.self, forKey: .DivisionID)
         DivisionID = Int(dID) ?? -1
     }
+    
+    public func toTeam() -> Team {
+        return Team(
+            id: self.id,
+            VenueID: self.VenueID,
+            VenueName: self.VenueName,
+            Name: self.Name,
+            DivisionID: self.DivisionID
+        )
+    }
 }
 
-extension Team {
+
+public struct Team: Codable {
+    public var id: Int?
+    public var VenueID: Int
+    public var VenueName: String
+    public var Name: String
+    public var DivisionID: Int
+    
     static func GetEndpoint(allStar: AllStarTeamData, season: Int) -> Endpoint {
         return Endpoint(
             secure: true,
@@ -61,6 +78,10 @@ extension Team {
         }
         
         let result = try decoder.decode(TeamListRequestResult.self, from: data)
-        return result.team_all_season.queryResults.row
+        let mlbLookupTeam = result.team_all_season.queryResults.row
+        
+        return mlbLookupTeam.map { mlbTeam in
+            return mlbTeam.toTeam()
+        }
     }
 }

@@ -30,7 +30,7 @@ struct TeamListRequestResult: Codable {
         struct TeamQueryResult: Codable {
             var created: String
             var totalSize: String
-            var row: [Team]
+            var row: [MLBLookupTeam]
         }
     }
 }
